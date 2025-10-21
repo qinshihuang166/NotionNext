@@ -52,13 +52,14 @@ const MyApp = ({ Component, pageProps }) => {
   )
 
   const enableClerk = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+  const isGameRoute = route?.asPath?.startsWith('/games') || route?.pathname?.startsWith('/games')
   const content = (
     <GlobalContextProvider {...pageProps}>
       <GLayout {...pageProps}>
         <SEO {...pageProps} />
         <Component {...pageProps} />
       </GLayout>
-      <ExternalPlugins {...pageProps} />
+      {!isGameRoute && <ExternalPlugins {...pageProps} />}
     </GlobalContextProvider>
   )
   return (
