@@ -70,6 +70,7 @@ const ExternalPlugin = props => {
     NOTION_CONFIG
   )
   const AD_WWADS_ID = siteConfig('AD_WWADS_ID', null, NOTION_CONFIG)
+  const ADSENSE_GOOGLE_POPUP = siteConfig('ADSENSE_GOOGLE_POPUP', null, NOTION_CONFIG)
   const COMMENT_ARTALK_SERVER = siteConfig(
     'COMMENT_ARTALK_SERVER',
     null,
@@ -223,6 +224,8 @@ const ExternalPlugin = props => {
       <AosAnimation />
       {ANALYTICS_51LA_ID && ANALYTICS_51LA_CK && <LA51 />}
       {COZE_BOT_ID && <Coze />}
+      {ADSENSE_GOOGLE_POPUP && <GoogleAdsensePopup />}
+
 
       {ANALYTICS_51LA_ID && ANALYTICS_51LA_CK && (
         <>
@@ -497,6 +500,7 @@ const Messenger = dynamic(() => import('@/components/FacebookMessenger'), {
   ssr: false
 })
 const VConsole = dynamic(() => import('@/components/VConsole'), { ssr: false })
+const GoogleAdsensePopup = dynamic(() => import('@/components/GoogleAdsensePopup'), { ssr: false })
 const CustomContextMenu = dynamic(
   () => import('@/components/CustomContextMenu'),
   { ssr: false }
