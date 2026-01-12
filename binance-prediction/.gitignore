@@ -11,6 +11,15 @@ data/*.csv
 data/*.png
 models/*.pkl
 
+# LSTM specific
+lstm_data/
+lstm_models/*.h5
+lstm_models/*.pkl
+lstm_results/*.png
+lstm_results/*.csv
+logs/
+*.log
+
 # IDEs
 .vscode/
 .idea/
