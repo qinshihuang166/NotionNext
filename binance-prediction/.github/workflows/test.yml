@@ -1,0 +1,28 @@
+name: Python Testing
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: Install dependencies
+      run: |
+        cd binance-prediction
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Lint with flake8
+      run: |
+        pip install flake8
+        flake8 binance-prediction --count --select=E9,F63,F7,F82 --show-source --statistics
+    - name: Test imports
+      run: |
+        cd binance-prediction
+        export PYTHONPATH=$PYTHONPATH:.
+        python3 -c "from utils.data_processor import DataProcessor; print('Import success')"
