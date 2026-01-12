@@ -1,0 +1,6 @@
+# This directory stores trained ML models in .pkl format
+# Models are trained using scripts/train_model.py
+# Example: BTCUSDT_price_model.pkl, ETHUSDT_price_model.pkl
+# 此目录存储 .pkl 格式的训练好的 ML 模型
+# 模型通过 scripts/train_model.py 训练
+# 例如：BTCUSDT_price_model.pkl, ETHUSDT_price_model.pkl

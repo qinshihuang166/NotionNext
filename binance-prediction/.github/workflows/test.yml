@@ -14,15 +14,49 @@ jobs:
         python-version: 3.9
     - name: Install dependencies
       run: |
-        cd binance-prediction
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Lint with flake8
       run: |
         pip install flake8
-        flake8 binance-prediction --count --select=E9,F63,F7,F82 --show-source --statistics
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
     - name: Test imports
       run: |
-        cd binance-prediction
         export PYTHONPATH=$PYTHONPATH:.
-        python3 -c "from utils.data_processor import DataProcessor; print('Import success')"
+        python3 -c "from utils.data_processor import DataProcessor; print('✅ DataProcessor import success')"
+        python3 -c "from utils.binance_client import BinanceUtility; print('✅ BinanceUtility import success')"
+        python3 -c "from utils.visualizer import DataVisualizer; print('✅ DataVisualizer import success')"
+    - name: Test data processing
+      run: |
+        export PYTHONPATH=$PYTHONPATH:.
+        python3 -c "
+import pandas as pd
+import numpy as np
+from utils.data_processor import DataProcessor
+
+# Create test data / 创建测试数据
+test_data = pd.DataFrame({
+    'timestamp': pd.date_range('2024-01-01', periods=100, freq='1H'),
+    'open': np.random.randn(100).cumsum() + 50000,
+    'high': np.random.randn(100).cumsum() + 50100,
+    'low': np.random.randn(100).cumsum() + 49900,
+    'close': np.random.randn(100).cumsum() + 50000,
+    'volume': np.random.randint(100, 1000, 100)
+})
+
+# Test feature engineering / 测试特征工程
+processor = DataProcessor()
+df_features = processor.add_technical_indicators(test_data)
+X, y = processor.prepare_features_labels(df_features)
+print(f'✅ Features shape: {X.shape}')
+print(f'✅ Labels shape: {y.shape}')
+print('✅ Data processing test passed / 数据处理测试通过')
+"
+    - name: Test scripts syntax
+      run: |
+        python3 -m py_compile scripts/download_data.py
+        python3 -m py_compile scripts/train_model.py
+        python3 -m py_compile scripts/backtest.py
+        python3 -m py_compile scripts/app.py
+        python3 -m py_compile scripts/predict.py
+        echo "✅ All scripts syntax check passed / 所有脚本语法检查通过"

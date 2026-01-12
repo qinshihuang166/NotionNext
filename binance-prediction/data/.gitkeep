@@ -1,0 +1,6 @@
+# This directory stores historical price data in CSV format
+# Data files will be downloaded using scripts/download_data.py
+# Example: BTCUSDT_hist.csv, ETHUSDT_hist.csv
+# 此目录存储 CSV 格式的历史价格数据
+# 数据文件将通过 scripts/download_data.py 下载
+# 例如：BTCUSDT_hist.csv, ETHUSDT_hist.csv
