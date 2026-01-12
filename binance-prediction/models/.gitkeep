@@ -1,0 +1,10 @@
+# 此目录用于存储训练好的模型
+# This directory is used to store trained models
+
+# After training, you will find model files like:
+# - BTCUSDT_price_model.pkl
+# - BTCUSDT_model_info.txt
+
+# 训练后，你将找到类似这样的模型文件：
+# - BTCUSDT_price_model.pkl
+# - BTCUSDT_model_info.txt

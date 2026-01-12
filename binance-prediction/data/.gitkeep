@@ -1,0 +1,10 @@
+# 此目录用于存储历史价格数据
+# This directory is used to store historical price data
+
+# After running download_data.py, you will find CSV files like:
+# - BTCUSDT_hist.csv
+# - ETHUSDT_hist.csv
+
+# 运行 download_data.py 后，你将找到类似这样的 CSV 文件：
+# - BTCUSDT_hist.csv
+# - ETHUSDT_hist.csv
