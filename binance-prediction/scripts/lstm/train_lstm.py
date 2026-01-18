@@ -30,7 +30,6 @@ from config_lstm import (
 )
 from utils.lstm_data_processor import LSTMDataProcessor
 from utils.lstm_model_builder import LSTMModelBuilder, setup_gpu
-from utils.visualizer import Visualizer
 import pandas as pd
 import numpy as np
 
